@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1B5E5A">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Kostku — Manajemen Kost & Kontrakan</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231B5E5A'/%3E%3Cpath d='M9 25V12l7-5 7 5v13h-5v-6h-4v6z' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Layar memuat -->
+  <div id="boot" class="boot">
+    <div class="boot-inner">
+      <div class="logo-mark"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+      <div class="h-sm">Kostku</div>
+      <div class="small">Menyiapkan data kost...</div>
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+
+  <!-- Login -->
+  <section id="login" class="login hidden" aria-label="Login">
+    <div class="login-card">
+      <div class="logo-mark"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+      <h1 class="h-xl">Masuk ke Kostku</h1>
+      <p class="sub">Manajemen kost & kontrakan untuk Owner dan Admin</p>
+      <div id="login-warn" class="banner amber mb-16 hidden"><div><b>GAS_URL belum diisi.</b> Buka <code>js/config.js</code> lalu tempel URL Web App Apps Script (berakhiran <code>/exec</code>).</div></div>
+      <form id="login-form" autocomplete="on" novalidate>
+        <div class="field">
+          <label for="login-user">Username</label>
+          <input id="login-user" class="input" name="username" autocomplete="username" autocapitalize="off" spellcheck="false" required placeholder="contoh: owner">
+        </div>
+        <div class="field">
+          <label for="login-pw">Sandi</label>
+          <div class="input-group">
+            <input id="login-pw" class="input" type="password" name="password" autocomplete="current-password" required placeholder="••••••••">
+            <button type="button" id="toggle-pw" class="suffix" style="border:0;cursor:pointer" aria-label="Tampilkan sandi"><svg class="ic ic-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          </div>
+        </div>
+        <div id="login-err" class="banner danger mb-16 hidden" role="alert"></div>
+        <button id="login-btn" class="btn btn-primary btn-block" type="submit">Masuk</button>
+      </form>
+      <div class="login-foot">Data tersimpan aman di Google Sheets & Drive milik pemilik kost.<br>Sesi berakhir otomatis setelah 60 menit tidak aktif.</div>
+    </div>
+  </section>
+
+  <!-- Aplikasi -->
+  <div id="shell" class="shell hidden">
+    <aside id="sidebar" class="sidebar" aria-label="Navigasi"></aside>
+    <div class="main-col">
+      <header id="topbar" class="topbar"></header>
+      <main id="view" class="view" tabindex="-1"></main>
+    </div>
+    <nav id="bottomnav" class="bottom-nav" aria-label="Navigasi utama"></nav>
+  </div>
+
+  <div id="sheet-root"></div>
+  <div id="toast-root" class="toast-root" aria-live="polite"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/util.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/pages-utama.js"></script>
+  <script src="js/pages-keuangan.js"></script>
+  <script src="js/pages-lainnya.js"></script>
+  <script>App.init();</script>
+</body>
+</html>
